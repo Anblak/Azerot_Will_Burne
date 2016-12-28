@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AZEROT_WIIL_BURNE:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="AZEROT_WIIL_BURNE-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="AZEROT_WIIL_BURNE:war exploded" />
+    </root>
+  </artifact>
+</component>
