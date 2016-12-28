@@ -31,8 +31,8 @@ public class UserController {
 
 	@RequestMapping("/registration")
 	public String newUser(Model model) {
-		model.addAttribute("userDTOs", DtoUtilMapper.userTOUserDTOs(userService.findAll()));
-		model.addAttribute("user", new User());
+//		model.addAttribute("userDTOs", DtoUtilMapper.userTOUserDTOs(userService.findAll()));
+//		model.addAttribute("user", new User());
 		return "views-security-registration";
 	}
 
@@ -101,5 +101,31 @@ public class UserController {
 
 		return "redirect:/profile";
 	}
+	
+	
+	
+	
+    @RequestMapping("/updateProfile")
+    public String updateProfile(Principal principal, Model model){
+        User user = userService.findOne(Integer.parseInt(principal.getName()));
+        model.addAttribute("user", user);
+        return "views-security-updateProfile";
+    }
+
+    @RequestMapping(value = "/updateProfile", method = RequestMethod.POST)
+    public String updateProfile(Principal principal, @RequestParam String name,
+                                @RequestParam String email,
+                                @RequestParam String phone,
+                                @RequestParam String password){
+        User user = userService.findOne(Integer.parseInt(principal.getName()));
+
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        userService.updateProfile(user);
+
+        return "redirect:/profile";
+    }
 	
 }

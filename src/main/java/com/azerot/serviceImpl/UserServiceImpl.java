@@ -108,6 +108,9 @@ public class UserServiceImpl implements UserService,UserDetailsService {
             System.out.println("error with file");
         }
     }
-	
+	public void updateProfile(User user) {
+		user.setPassword(encoder.encode(user.getPassword()));
+		userDao.save(user);
+	}
 
 }

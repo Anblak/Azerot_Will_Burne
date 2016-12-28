@@ -19,6 +19,8 @@ public interface UserService {
     User findByUUID(String uuid);
 
     void update(User user);
+    void updateProfile(User user);
+
 
     public void saveImage(Principal principal, MultipartFile multipartFile);
 }
